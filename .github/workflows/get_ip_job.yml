@@ -23,4 +23,6 @@ jobs:
 
       # Step 3: Run the Python script
       - name: Run Python script
-        run: python getip.py
+        run: |
+          pip install requests
+          python getip.py

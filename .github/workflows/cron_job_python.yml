@@ -5,8 +5,8 @@ name: Run Python Cron Job
 # This workflow will run every 30 minutes
 on:
   push:
-  schedule:
-    - cron: '*/30 * * * *'  # Runs every 30 minutes
+  # schedule:
+  #   - cron: '*/30 * * * *'  # Runs every 30 minutes
 
 jobs:
   run-python-script:
