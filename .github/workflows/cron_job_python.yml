@@ -6,7 +6,7 @@ name: Run Python Cron Job
 on:
   push:
   schedule:
-    - cron: '*/45 * * * *'  # Runs every 30 minutes
+    - cron: '*/30 * * * *'  # Runs every 30 minutes
 
 jobs:
   run-python-script:
