@@ -4,8 +4,9 @@ name: Run Python Cron Job
 
 # This workflow will run every 30 minutes
 on:
+  push:
   schedule:
-    - cron: '*/30 * * * *'  # Runs every 30 minutes
+    - cron: '*/45 * * * *'  # Runs every 30 minutes
 
 jobs:
   run-python-script:
@@ -29,7 +30,7 @@ jobs:
 
       # Step 4: Run the Python script
       - name: Run Python script
-        run: python bot-proxy.py
+        run: timeout 600 python bot-proxy.py
 
       # (Optional) Step 5: Cache Python dependencies to speed up future runs
       - name: Cache pip dependencies
