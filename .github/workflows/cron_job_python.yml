@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: Run the Python script
       - name: Run Python script
-        run: timeout 600 python bot-proxy.py
+        run: timeout 900 python bot-proxy.py
 
       # (Optional) Step 5: Cache Python dependencies to speed up future runs
       - name: Cache pip dependencies
