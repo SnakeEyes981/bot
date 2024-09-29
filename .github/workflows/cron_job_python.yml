@@ -6,7 +6,7 @@ name: Run Python Cron Job
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/60 * * * *'  # Runs every 30 minutes
+    - cron: '0 */2 * * *'  # Runs every 30 minutes
 
 jobs:
   run-python-script:
