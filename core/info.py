@@ -32,6 +32,6 @@ def get_info(token, proxies=None):
             f"{base.green}Balance: {base.white}{balance:,} - {base.green}Attempts Left: {base.white}{attempts_left}"
         )
 
-        return attempts_left, is_countdown
+        return attempts_left, is_countdown, balance
     except:
-        return None, None
+        return None, None, None
